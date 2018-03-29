@@ -1,4 +1,4 @@
-from matplotlib import use
+from matplotlib import use, cm
 use('TkAgg')
 import numpy as np
 import matplotlib.pyplot as plt
@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from gradientDescentMulti import gradientDescentMulti
 from normalEqn import normalEqn
 from featureNormalize import featureNormalize
-from show import show
+#from show import show
 # ================ Part 1: Feature Normalization ================
 
 print('Loading data ...')
@@ -61,7 +61,7 @@ X = np.concatenate((np.ones((m, 1)), X), axis=1)
 print('Running gradient descent ...')
 
 # Choose some alpha value
-alpha = 0.01
+alpha = 0.04
 num_iters = 400
 
 # Init Theta and Run Gradient Descent 
@@ -72,16 +72,22 @@ theta, J_history = gradientDescentMulti(X, y, theta, alpha, num_iters)
 plt.plot(J_history, '-b')
 plt.xlabel('Number of iterations')
 plt.ylabel('Cost J')
-show()
+plt.show()
 input("Program paused. Press Enter to continue...")
 
 # Display gradient descent's result
 print('Theta computed from gradient descent: ')
 print(theta)
 
-# Estimate the price of a 1650 sq-ft, 3 br house
-price = np.array([1,3,1650]).dot(theta)
+# Estimate the price of a 1650 sq-ft, 3 br house, with normalization
+home=[]
+home=np.array([1650,3])
+sigma_matrix=np.array([sigma])
+home=np.divide((home-mu),sigma_matrix)
+home = np.concatenate((np.ones((1, 1)), home), axis=1)
 
+price = np.array([home]).dot(theta)
+#X_norm=np.divide((X - mu_math),sigma_matrix)
 print('Predicted price of a 1650 sq-ft, 3 br house')
 print('(using gradient descent): ')
 print(price)
@@ -119,7 +125,7 @@ print('Theta computed from the normal equations:')
 print(' %s \n' % theta)
 
 # Estimate the price of a 1650 sq-ft, 3 br house
-price = np.array([1, 3, 1650]).dot(theta)
+price = np.array([1, 1650, 3]).dot(theta)
 
 # ============================================================
 

@@ -19,5 +19,15 @@ def plotData(data):
 #       markers larger by using plot(..., 'rx', 'MarkerSize', 10);
 
     plt.figure()  # open a new figure window
-
+    plt.scatter(data[:,0],data[:,1],s=10, marker='x', c='r')
+    #plt.scatter(x,y,s=10,marker='x',c='r')
+    plt.xlabel("Population of City in 10,000s")
+    plt.ylabel("Profit in $10,000s")
+    plt.yticks([-5,0,5,10,15,20,25])
+    plt.xticks([4,6,8,10,12,14,16,18,20,22,24])
 # ============================================================
+
+#data=np.loadtxt('ex1data1.txt',delimiter=',')
+
+
+#plotData(data)

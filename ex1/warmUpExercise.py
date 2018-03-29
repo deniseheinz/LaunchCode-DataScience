@@ -1,6 +1,8 @@
 from numpy import eye
 
+
 def warmUpExercise():
+    
     """ an example function that returns the 5x5 identity matrix
    """
 
@@ -10,6 +12,10 @@ def warmUpExercise():
 #               represent the return values (at the top of the file)
 #               and then set them accordingly.
    
-    return eye(5)
+    A=eye(5)
+    print(A)
+    
+    
+
 
 # ===========================================

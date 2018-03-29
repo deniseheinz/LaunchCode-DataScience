@@ -1,10 +1,11 @@
 from computeCost import computeCost
+import numpy as np
 
 
 def gradientDescent(X, y, theta, alpha, num_iters):
     """
      Performs gradient descent to learn theta
-       theta = gradientDescent(x, y, theta, alpha, num_iters) updates theta by
+       theta = gradientDescent(x, y, theta, alpha, iterations) updates theta by
        taking num_iters gradient steps with learning rate alpha
     """
 
@@ -16,11 +17,16 @@ def gradientDescent(X, y, theta, alpha, num_iters):
         #   ====================== YOUR CODE HERE ======================
         # Instructions: Perform a single gradient step on the parameter vector
         #               theta.
-        #
+        #work through hypothesis and subtract y
+        h = np.dot(X,theta)
+        e = (h-y)
+        #finish with dot product of xT and error
+        grad = np.dot(np.transpose(X),e)
+        #solve for theta
+        theta = theta-(alpha*grad/m)
         # Hint: While debugging, it can be useful to print out the values
         #       of the cost function (computeCost) and gradient here.
-        #
-
+        #print(computeCost(X,y,theta))
 
         # ============================================================
 

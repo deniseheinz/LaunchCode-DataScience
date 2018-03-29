@@ -1,4 +1,5 @@
 from computeCostMulti import computeCostMulti
+import numpy as np
 
 
 def gradientDescentMulti(X, y, theta, alpha, num_iters):
@@ -20,8 +21,14 @@ def gradientDescentMulti(X, y, theta, alpha, num_iters):
         # Hint: While debugging, it can be useful to print out the values
         #       of the cost function (computeCost) and gradient here.
         #
-
-
+        #work through hypothesis and subtract y
+        h_gd = np.dot(X,theta)
+        e_gd = (h_gd-y)
+        #finish with dot product of xT and error
+        grad = np.dot(np.transpose(X),e_gd)
+        #solve for theta
+        theta = theta-(alpha*grad/m)
+        #print(computeCost(X,y,theta))
 
         # ============================================================
 
