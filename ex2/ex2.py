@@ -10,7 +10,7 @@ from costFunction import costFunction
 from gradientFunction import gradientFunction
 from sigmoid import sigmoid
 from predict import predict
-from show import show
+#from show import show
 
 ## Machine Learning Online Class - Exercise 2: Logistic Regression
 #
@@ -55,7 +55,7 @@ plt.legend(['Admitted', 'Not admitted'], loc='upper right', shadow=True, fontsiz
 
 plt.xlabel('Exam 1 score')
 plt.ylabel('Exam 2 score')
-show()
+plt.show()
 input("Program paused. Press Enter to continue...")
 
 
@@ -81,7 +81,7 @@ input("Program paused. Press Enter to continue...")
 # ============= Part 3: Optimizing using scipy  =============
 res = minimize(costFunction, initial_theta, method='TNC',
                jac=False, args=(X, y), options={'gtol': 1e-3, 'disp': True, 'maxiter': 1000})
-
+#Nelder-Mead method works similar to the Octave code
 theta = res.x
 cost = res.fun
 
@@ -96,7 +96,7 @@ plotDecisionBoundary(theta, X, y)
 plt.legend(['Admitted', 'Not admitted'], loc='upper right', shadow=True, fontsize='x-large', numpoints=1)
 plt.xlabel('Exam 1 score')
 plt.ylabel('Exam 2 score')
-show()
+plt.show()
 
 input("Program paused. Press Enter to continue...")
 

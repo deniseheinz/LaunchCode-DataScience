@@ -80,10 +80,11 @@ print('Theta computed from gradient descent: ')
 print(theta)
 
 # Estimate the price of a 1650 sq-ft, 3 br house, with normalization
-home=[]
+
 home=np.array([1650,3])
-sigma_matrix=np.array([sigma])
-home=np.divide((home-mu),sigma_matrix)
+homenorm=(home-mu)/sigma
+#sigma_matrix=np.array([sigma])
+#home=np.divide((home-mu),sigma_matrix)
 home = np.concatenate((np.ones((1, 1)), home), axis=1)
 
 price = np.array([home]).dot(theta)

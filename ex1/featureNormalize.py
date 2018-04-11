@@ -8,8 +8,8 @@ def featureNormalize(X):
        is 1. This is often a good preprocessing step to do when
        working with learning algorithms.
     """
-    #X_norm, mu, sigma = X,0,0
-    X_norm, mu, sigma = X,[],[]
+    X_norm, mu, sigma = X,0,0
+    #X_norm, mu, sigma = X,[],[]
     
     
     # ====================== YOUR CODE HERE ======================
@@ -27,22 +27,25 @@ def featureNormalize(X):
     #
     
     # Hint: You might find the 'mean' and 'std' functions useful.
-    features=range(0,np.size(X,1))
-    for i in features:
-        single_mean = np.mean(X[:,i]) 
-        mu.append(single_mean)
-        single_std = np.std(X[:,i])
-        sigma.append(single_std)
-    mu_matrix=np.array([mu])
-    mu_matrix.transpose()
-    m=np.size(X,0)
-    mu_math=np.repeat(mu_matrix,m,axis=0)
-    sigma_matrix=np.array([sigma])
-    X_norm=np.divide((X - mu_math),sigma_matrix)
+    #features=range(0,np.size(X,1))
+    #for i in features:
+     #   single_mean = np.mean(X[:,i]) 
+      #  mu.append(single_mean)
+       # single_std = np.std(X[:,i])
+        #sigma.append(single_std)
+    #mu_matrix=np.array([mu])
+    #mu_matrix.transpose()
+    #m=np.size(X,0)
+    #mu_math=np.repeat(mu_matrix,m,axis=0)
+    #sigma_matrix=np.array([sigma])
+    #X_norm=np.divide((X - mu_math),sigma_matrix)
         
     
     
-    
+    ### New stuff
+    mu = np.mean(X, axis=0)
+    sigma = np.std(X, axis=0)
+    X_norm =(X-mu)/sigma
 # ============================================================
 
     return X_norm, mu, sigma
