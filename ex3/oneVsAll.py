@@ -2,8 +2,11 @@ import numpy as np
 from scipy.optimize import minimize
 
 from lrCostFunction import lrCostFunction
-from ex2.gradientFunctionReg import gradientFunctionReg
+from lrCostFunction import gradient
 
+#=========================================================================
+
+#=======================================================================
 
 def oneVsAll(X, y, num_labels, Lambda):
     """trains multiple logistic regression classifiers and returns all
@@ -35,9 +38,20 @@ def oneVsAll(X, y, num_labels, Lambda):
 #       loop over the different classes.
 
     # Set Initial theta
-    initial_theta = np.zeros((n + 1, 1))
-
-    # This function will return theta and the cost
+    #initial_theta = np.zeros((n + 1, 1))
+    
+ 
+    for c in range(1,num_labels+1):
+        #create true/false for values equal to c
+        initial_theta = np.zeros((n + 1, 1))
+        y_c=np.array(y==c)
+#find minimal value, taken from exercise 2
+        result = minimize(fun=lrCostFunction, x0=initial_theta, args=(X, y_c, Lambda), method='L-BFGS-B',
+               jac=gradient)
+               #options={'gtol': 1e-4, 'disp': False, 'maxiter': 1000})        
+        all_theta[c-1,:] = result.x
+        #cost = result.fun
+    # This function will return theta and the cost(?)
 
 
 

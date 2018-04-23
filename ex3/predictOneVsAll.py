@@ -1,6 +1,10 @@
 import numpy as np
 
-from ex2.sigmoid import sigmoid
+
+def sigmoid(z):
+    """computes the sigmoid of z."""
+    return 1.0/(1+np.exp(-z))
+    
 
 def predictOneVsAll(all_theta, X):
     """will return a vector of predictions
@@ -29,8 +33,13 @@ def predictOneVsAll(all_theta, X):
 #       max element, for more information see 'help max'. If your examples 
 #       are in rows, then, you can use max(A, [], 2) to obtain the max 
 #       for each row.
-#       
+    X=np.matrix(X)
+    all_theta=np.matrix(all_theta)
+    h=(sigmoid(np.dot(X,all_theta.T)))
+    p=np.argmax(h, axis=1)
 
+
+    
 
 # =========================================================================
 

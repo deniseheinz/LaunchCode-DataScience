@@ -60,8 +60,9 @@ input("Program paused. Press Enter to continue...")
 
 print('Training One-vs-All Logistic Regression...')
 
-Lambda = 0.1
+Lambda = 1
 all_theta = oneVsAll(X, y, num_labels, Lambda)
+
 
 input("Program paused. Press Enter to continue...")
 
