@@ -1,5 +1,6 @@
 import numpy as np
-
+import sys
+sys.path.append('../')
 from ex2.sigmoid import sigmoid
 from sigmoidGradient import sigmoidGradient
 

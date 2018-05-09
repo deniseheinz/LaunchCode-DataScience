@@ -40,11 +40,11 @@ def lrCostFunction(theta, X, y, Lambda):
     Lambda=np.matrix(Lambda)
     #initial_theta = np.zeros(X.shape[1])
 # from ex2.costfunctionreg    
-    h=sigmoid(np.dot(X,theta.T))
-    one=np.multiply(y,np.log(h))
-    two=np.multiply((1-y),np.log(1-h))
-    reg=(Lambda/(2.0*m))*np.sum(np.power(theta[:,1:],2))
-    J=(-1.0/m)*np.sum(one+two)+reg
+    h=sigmoid(X.dot(theta.T))
+    one=np.dot(y.T,np.log(h))
+    two=np.dot((1-y).T,np.log(1-h))
+    reg=(Lambda/(2.0*m))*np.sum(np.power(theta[1:],2))
+    J=(-1.0/m)*(one+two)+reg
     return J
     
     #grad = (1.0/m)*X.T.dot(z-y.values.flatten())+(1.0/m)*Lambda*theta
@@ -59,10 +59,12 @@ def gradient(theta, X, y, Lambda):
     theta=np.matrix(theta)
     X=np.matrix(X)
     y=np.matrix(y)
+    #h=sigmoid(np.dot(X,theta.T))
     h=sigmoid(np.dot(X,theta.T))
     #grad=(1.0/m)*X.T.dot(h-y)
-    grad=((1.0/m)*np.dot(X.T,(h-y))).T
-    gradreg=grad+np.multiply((Lambda/m),theta)
+    grad=(1.0/m)*np.dot(X.T,(h-y))
+    #grad=((1.0/m)*np.dot(X.T,(h-y))).T
+    gradreg=grad.T+np.multiply((Lambda/m),theta)
     gradreg[0,0]=np.sum(np.multiply(X[:,0],(h-y)))/m
     return gradreg
  

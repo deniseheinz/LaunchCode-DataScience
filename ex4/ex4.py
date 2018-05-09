@@ -14,6 +14,8 @@
 #  For this exercise, you will not need to change any code in this file,
 #  or any other files other than those mentioned above.
 #
+import sys
+sys.path.append('../')
 
 import numpy as np
 import scipy.io

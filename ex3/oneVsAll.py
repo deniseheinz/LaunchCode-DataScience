@@ -45,12 +45,11 @@ def oneVsAll(X, y, num_labels, Lambda):
         #create true/false for values equal to c
         initial_theta = np.zeros((n + 1, 1))
         y_c=np.array(y==c)
-#find minimal value, taken from exercise 2
-        result = minimize(fun=lrCostFunction, x0=initial_theta, args=(X, y_c, Lambda), method='L-BFGS-B',
-               jac=gradient)
-               #options={'gtol': 1e-4, 'disp': False, 'maxiter': 1000})        
-        all_theta[c-1,:] = result.x
-        #cost = result.fun
+        y_c=y_c*1
+        #find minimal value, taken from exercise 2
+        result = minimize(fun=lrCostFunction, x0=initial_theta, args=(X, y_c, Lambda), jac=gradient, method='TNC', options={'gtol': 1e-4, 'disp': False, 'maxiter': 1000})        
+        all_theta[(c-1),:] = result.x
+        cost = result.fun
     # This function will return theta and the cost(?)
 
 
