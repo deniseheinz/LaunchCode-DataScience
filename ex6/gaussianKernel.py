@@ -7,8 +7,8 @@ def gaussianKernel(x1, x2, sigma):
     """
 
 # Ensure that x1 and x2 are column vectors
-#     x1 = x1.ravel()
-#     x2 = x2.ravel()
+    x1 = x1.ravel()
+    x2 = x2.ravel()
 
 # You need to return the following variables correctly.
     sim = 0
@@ -19,7 +19,7 @@ def gaussianKernel(x1, x2, sigma):
 #               sigma
 #
 #
-
+    sim=np.exp(-(np.sum((x1-x2)**2))/(2*(sigma**2)))
 
 # =============================================================
     return sim

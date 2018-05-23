@@ -21,9 +21,11 @@ import numpy as np
 import scipy.io
 from sklearn import svm
 from dataset3Params import dataset3Params
+
 from plotData import plotData
 from visualizeBoundary import visualizeBoundary
 from visualizeBoundaryLinear import visualizeBoundaryLinear
+from gaussianKernel import gaussianKernel
 
 ## =============== Part 1: Loading and Visualizing Data ================
 #  We start the exercise by first loading and visualizing the dataset. 
@@ -60,8 +62,8 @@ print('Training Linear SVM ...')
 # You should try to change the C value below and see how the decision
 # boundary varies (e.g., try C = 1000)
 
-C = 1
-clf = svm.SVC(C=C, kernel='linear', tol=1e-3, max_iter=20)
+C = 1000
+clf = svm.SVC(C=1000, kernel='linear', tol=1e-3, max_iter=30)
 model = clf.fit(X, y)
 visualizeBoundaryLinear(X, y, model)
 
@@ -76,10 +78,11 @@ print('Evaluating the Gaussian Kernel ...')
 x1 = np.array([1, 2, 1])
 x2 = np.array([0, 4, -1])
 sigma = 2
-# sim = gaussianKernel(x1, x2, sigma)
+sim = gaussianKernel(x1, x2, sigma)
 #
-# print 'Gaussian Kernel between x1 = [1 2 1], x2 = [0 4 -1], sigma = %0.5f : ' \
-#        '\t%f\n(this value should be about 0.324652)\n' % (sigma, sim)
+print(sigma, sim)
+#print ('Gaussian Kernel between x1 = [1 2 1], x2 = [0 4 -1], sigma = %0.5f :\'
+#'\t%f\n(this value should be about 0.324652)\n' % (sigma, sim))
 
 input("Program paused. Press Enter to continue...")
 
@@ -93,11 +96,11 @@ print('Loading and Visualizing Data ...')
 # Load from ex6data2:
 # You will have X, y in your environment
 data = scipy.io.loadmat('ex6data2.mat')
-X = data['X']
-y = data['y'].flatten()
+X_two = data['X']
+y_two = data['y'].flatten()
 
 # Plot training data
-plotData(X, y)
+plotData(X_two, y_two)
 
 input("Program paused. Press Enter to continue...")
 
@@ -110,8 +113,8 @@ print('Training SVM with RBF Kernel (this may take 1 to 2 minutes) ...')
 # Load from ex6data2:
 # You will have X, y in your environment
 data = scipy.io.loadmat('ex6data2.mat')
-X = data['X']
-y = data['y'].flatten()
+X_two = data['X']
+y_two = data['y'].flatten()
 
 # SVM Parameters
 C = 1
