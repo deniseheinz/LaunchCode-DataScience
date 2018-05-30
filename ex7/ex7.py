@@ -34,7 +34,7 @@ from findClosestCentroids import findClosestCentroids
 from computeCentroids import computeCentroids
 from runkMeans import runkMeans
 from kMeansInitCentroids import kMeansInitCentroids
-from show import show
+#from show import show
 
 print('Finding closest centroids.')
 

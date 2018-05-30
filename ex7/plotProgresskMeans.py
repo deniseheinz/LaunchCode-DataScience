@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 from plotDataPoints import plotDataPoints
-from show import show
+#from show import show
 
 def plotProgresskMeans(X, centroids, previous, idx, K, i, color):
     """plots the data
@@ -24,6 +24,6 @@ def plotProgresskMeans(X, centroids, previous, idx, K, i, color):
 
 # Title
     plt.title('Iteration number %d' % i)
-    show()
+    plt.show()
     input("Program paused. Press Enter to continue...")
 
